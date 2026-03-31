@@ -114,3 +114,49 @@ Por ultimo, criamos o documento README.md.
     - outros comandos do flutter pub(dependências)
         - flutter pub outdated (verifica se as dependências estão desatualizadas)
         - flutter pub upgrade (atualiza as depenências do flutter pub)
+
+## Estrutura Básica de um Aplictivo em Flutter
+
+
+### Árvore de Widgets
+```mermaid
+    flowchart TD
+        subgraph MaterialApp["MaterialApp"]
+        end
+        subgraph Janelas["Janelas"]
+            StateLess["StateLess"]
+            StateFull["StateFull"]
+        end
+        subgraph Scaffold["Scaffold"]
+            AppBar["Appbar"]
+            Body["Body"]
+            BNBar["BNBar"]
+            Drawer["Drawer"]
+            FAButton["FAButton"]
+            SnackBar["SnackBar"]
+        end
+        MaterialApp --> Janelas
+        Janelas --> Scaffold            
+```
+
+
+### Tipos de Janelas
+- Stateless:
+    Janelas Imatáveis - Uma vez construída ela não se altera.
+    OBS: Pode ter movimento (GIFs, Movies, Carrossel, Cards, etc), mas não dá para alterar as imagens, os vídeos e os elementos de movimento depois de montados.
+
+
+- StateFull:
+    Janelas que permitem mudanças de estado (setState).
+    OBS: Permite adicionar elementos na janela, como novas imagens, textos entre outros.
+
+
+- Comparativo entre Stateless e Stateful
+
+
+| Caracteristica | Stateless | Stateful |
+| --- | --- | --- |
+|Mutabilidade| Não | Sim |
+|Uso Ideal | Layouts Fixo e Exibição de dados Estáticos | Interações do Usuários, Animações e Dados Dinâmicos|
+|Armazenamento de Estado| Não | Sim |
+| Método Principal | build() | build()+setState() |
