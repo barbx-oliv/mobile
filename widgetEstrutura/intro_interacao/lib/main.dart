@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'pages/contato_page.dart';
+import 'pages/formulario_page.dart';
+import 'pages/home_page.dart';
+
 void main(List<String> args) {
   runApp(MaterialApp(
     //sistema de rotas para navegação entre telas
@@ -8,7 +12,7 @@ void main(List<String> args) {
     //contato: -> tela de contato
     routes: 
       {
-        "/": (context) => Home(),
+        "/": (context) => HomePage(),
         "/form": (context) => FormularioPage(),
         "/contato": (context) => ContatoPage(),
       }
