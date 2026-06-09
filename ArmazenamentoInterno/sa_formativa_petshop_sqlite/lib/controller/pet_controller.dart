@@ -1,6 +1,7 @@
 import 'package:sa_formativa_petshop_sqlite/service/database_helper.dart';
 import 'package:sa_formativa_petshop_sqlite/model/pet_model.dart';
 
+// SlimController - chama e executa
 class PetController {
   // atributo para estabelecer conexão com o banco 
   final _dbHelper = DatabaseHelper();

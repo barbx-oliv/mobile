@@ -13,7 +13,8 @@ class Consulta {
       'petId': petId, 
       'tipoServico': tipoServico, 
       'dataHora': dataHora, 
-      'observacoes': observacoes};
+      'observacoes': observacoes
+    };
   }
 
   factory Consulta.fromMap(Map<String, dynamic> map) {

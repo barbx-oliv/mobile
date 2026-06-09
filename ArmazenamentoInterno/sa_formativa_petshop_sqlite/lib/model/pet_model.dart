@@ -5,6 +5,7 @@ class Pet{
   String raca;
   String nomeDono;
   String telefone;
+  // Atributos públicos, se fossem privados, precisaria dos getter and setter (métodos públicos)
 
   //construtor
   Pet({this.id, required this.nome, required this.raca, required this.nomeDono, required this.telefone});

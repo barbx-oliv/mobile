@@ -6,7 +6,7 @@ import 'package:sa_formativa_petshop_sqlite/model/pet_model.dart';
 class DatabaseHelper {
   // classe do tipo singleton (permite o instanciamento de um unico obj por vez)
 
-  static final DatabaseHelper _instance = DatabaseHelper._internal();
+  static final DatabaseHelper _instance = DatabaseHelper._internal(); // instance é o DB interno, o instance só vai existir se o interno existir
 
   //essa não possui um construtor normal 
   //ele precisa do factory para estabelecer a conexão com o banco de dados
@@ -51,22 +51,22 @@ class DatabaseHelper {
     onConfigure: (db) async => await db.execute("PRAGMA foreign_key = ON")); // garante o delete on CASCATE
   }
 
-  //métodos do CRUD Simplificados
+  //métodos do APIREST Simplificados - É como se eu tivesse fazendo uma conexão com uma api 
 
-  //inserir pet
+  //inserir pet - POST
   Future<int> insertPet(Pet pet) async => (await database).insert("pets", pet.toMap());
 
-  //Listar Pets do DB
+  //Listar Pets do DB - GET
   Future<List<Pet>> getPets() async {
     //busca os pets no banco e retrona uma lista em ordem alfabetica
     final List<Map<String, dynamic>> maps = await (await database).query("pets", orderBy: "nome ASC");
     return List.generate(maps.length, (e) => Pet.fromMap(maps[e]));
   }
 
-  // Inserir consulta 
+  // Inserir consulta - POST
   Future<int> insertConsulta(Consulta c) async => (await database).insert("consultas", c.toMap());
 
-  // Get consulta por Pet 
+  // Get consulta por Pet - GET
   Future<List<Consulta>> getConsultaPorPet(int petId) async {
     final List<Map<String, dynamic>> maps = await (await database).query("consultas", where: "petId = ?", whereArgs: [petId], orderBy: "dataHora DESC");
     return List.generate(maps.length, (e)=> Consulta.fromMap(maps[e]));
