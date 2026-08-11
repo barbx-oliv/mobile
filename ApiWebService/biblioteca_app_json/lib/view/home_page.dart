@@ -1,0 +1,37 @@
+import 'package:flutter/material.dart';
+
+class HomePage extends StatefulWidget{
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _index = 0;
+
+  // Lista de páginas
+  final List<Widget> _pages = [
+    const BookListView(),
+    const UserListView(),
+    const LoanListView(),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Gerenciamento de Biblioteca")),
+      // No corpo da página vai aparecer o elemento de navegação 
+      body: _pages[_index],
+      bottomNavigatorBar: BottomNavigator(
+        currentIndex: _index,
+        onTap: (value) => setState(() => _index = value),
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.menu_book), label: "Livros"),
+          BottomNavigationBarItem(icon: Icon(Icons.assignment), label: "Empréstimos"),
+          BottomNavigationBarItem(icon: Icon(Icons.people), label: "Usuários")
+        ]
+      )
+    )
+  }
+}
