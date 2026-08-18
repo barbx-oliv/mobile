@@ -1,3 +1,6 @@
+import 'package:biblioteca_app_json/view/book_list_page.dart';
+import 'package:biblioteca_app_json/view/loan_list_page.dart';
+import 'package:biblioteca_app_json/view/user_list_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget{

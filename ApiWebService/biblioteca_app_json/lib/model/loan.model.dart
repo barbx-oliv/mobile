@@ -12,7 +12,7 @@ class LoanModel {
 
     // Construtor 
     LoanModel({
-        this.id ,
+        this.id,
         required this.user,
         required this.book,
         required this.startDate,
