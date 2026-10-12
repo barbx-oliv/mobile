@@ -1,4 +1,4 @@
-import 'book.model.dart';
+import 'book_model.dart';
 import 'user_model.dart';
 
 class LoanModel {

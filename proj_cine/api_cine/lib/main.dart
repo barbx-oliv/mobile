@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:api_cine/view/login_page.dart';
 
 void main() {
   runApp(const MainApp());
@@ -9,12 +10,15 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
+    return MaterialApp(
+      title: 'CineFavorite',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorSchemeSeed: Colors.deepPurple,
+        useMaterial3: true,
       ),
+      // A primeira tela do app deve ser o Login (conforme o briefing)
+      home: LoginView(),
     );
   }
 }
