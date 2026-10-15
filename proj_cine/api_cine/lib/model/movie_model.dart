@@ -1,37 +1,44 @@
-class MovieModel {
-  // atributos
-  final String? id;
+
+class Movie {
+  final int id;
   final String title;
   final String posterPath;
-  final String overview;
-  final String releaseDate;
-  final String rating;
+  double? rating;
 
-  MovieModel({
-    this.id,
+  Movie({
+    required this.id,
     required this.title,
     required this.posterPath,
-    required this.rating,
-    required this.overview,
-    required this.releaseDate,
+    this.rating,
   });
 
-  Map<String, dynamic> toMap() =>{
-    "id": id,
-    "title": title,
-    "posterPath": posterPath,
-    "overview": overview,
-    "releaseDate": releaseDate,
-    "rating": rating
-  };
-
-  factory MovieModel.fromMap(Map<String,dynamic> map) => 
-  MovieModel(
-    id: ["id"].toString(),
-    title: ["title"].toString(), 
-    posterPath: ["posterPath"].toString(), 
-    rating: ["rating"].toString(),
-    overview: ["overview"].toString(),
-    releaseDate: ["releaseDate"].toString()
+  // Converte o JSON que vem da API do TMDB em Objeto
+  factory Movie.fromJson(Map<String, dynamic> json) {
+    return Movie(
+      id: json['id'],
+      title: json['title'] ?? json['name'] ?? 'Sem Título',
+      posterPath: json['poster_path'] ?? '',
+      rating: 0.0,
     );
+  }
+
+  // Converte o dado que vem do SQLite em Objeto
+  factory Movie.fromMap(Map<String, dynamic> map) {
+    return Movie(
+      id: map['id'],
+      title: map['title'],
+      posterPath: map['posterPath'],
+      rating: map['rating'],
+    );
+  }
+
+  // Converte o Objeto para Map (para salvar no SQLite)
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'title': title,
+      'posterPath': posterPath,
+      'rating': rating,
+    };
+  }
 }

@@ -1,4 +1,4 @@
-import '../model/loan.model.dart';
+import '../model/loan_model.dart';
 import '../service/api_service.dart';
 
 class LoanController {
